@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Container } from '@mui/material';
-import ButtonUsage from './components/button';
+import { PaymentProvider } from './PaymentContext';
 import Logo from './components/Logo';
 import Title from './components/Title';
-
+import Pix from './components/Pix';
+import PixParcelado from './components/PixParcelado';
 import './App.css'
 
 
@@ -11,13 +12,14 @@ function App() {
 
   return (
     <>
-   <Container maxWidth="sm">
-      {/* <h1>Hello, World!</h1>
-      <p>This is a paragraph inside a Material-UI Container.</p>
-      <ButtonUsage /> */}
-      <Logo />
-      <Title clientName="João" />
-    </Container>
+    <PaymentProvider>
+      <Container maxWidth="sm">
+          <Logo />
+          <Title />
+          <Pix />
+          <PixParcelado />
+        </Container>
+    </PaymentProvider>
     </>
   )
 }
