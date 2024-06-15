@@ -206,7 +206,7 @@ export default function Pix() {
   }).format(mockUser.payAmount);
 
   return (
-    <CardContainer style={{border: isSelected ? '2px solid #03D69D' : '2px solid #E5E5E5'}}>
+    <CardContainer style={{border: (isSelected && payCondition === 'stallments-1') ? '2px solid #03D69D' : '2px solid #E5E5E5'}}>
       <PixTag>
         <PixTagText>Pix</PixTagText>
       </PixTag>
@@ -214,13 +214,13 @@ export default function Pix() {
         <PixPaymentAmount>
           <PayStallments>1x <span>R$ {formattedValue}</span>
           </PayStallments>
-          <LabelWrapper htmlFor="one-time-payment">
+          <LabelWrapper >
             <input 
               onChange={(e) => {handleSelection(e.target.id)}}
-              checked={payCondition === "one-time-payment" && isSelected}
+              checked={payCondition === "stallments-1" && isSelected}
               type="checkbox" 
-              id="one-time-payment" 
-              name="one-time-payment" />
+              id="stallments-1" 
+              name="stallments-1" />
             <CheckMarkCircle />
           </LabelWrapper>
         </PixPaymentAmount>
@@ -231,8 +231,6 @@ export default function Pix() {
          </p>
         </BlueRectangleRow>
       </PixInnerContainer>
-
-
     </CardContainer>
   )
 }
