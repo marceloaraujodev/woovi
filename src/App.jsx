@@ -16,7 +16,7 @@ function App() {
       <Container maxWidth="sm">
           <Logo />
           <Title />
-          {/* <Pix /> */}
+          <Pix />
           <PixParcelado />
         </Container>
     </PaymentProvider>

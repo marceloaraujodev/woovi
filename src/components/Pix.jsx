@@ -38,7 +38,8 @@ const PixInnerContainer = styled.div`
   margin-bottom: 23px;
   margin-right: 21px;
   margin-left: 21px;
-  ${({index, length}) => {
+
+  /* ${({index, length}) => {
     if(length === 1){
       return css`
         border-radius: 10px;
@@ -58,7 +59,7 @@ const PixInnerContainer = styled.div`
       }
     }
     return '';
-  }}
+  }} */
 
 `;
 const PixPaymentAmount = styled.div`
@@ -206,7 +207,10 @@ export default function Pix() {
   }).format(mockUser.payAmount);
 
   return (
-    <CardContainer style={{border: (isSelected && payCondition === 'stallments-1') ? '2px solid #03D69D' : '2px solid #E5E5E5'}}>
+    <CardContainer style={{
+      border: (isSelected && payCondition === 'stallments-1') ? '2px solid #03D69D' : '2px solid #E5E5E5',
+      backgroundColor: (isSelected && payCondition === 'stallments-1') ? '#F4FBF9' : '#fff'
+    }}>
       <PixTag>
         <PixTagText>Pix</PixTagText>
       </PixTag>

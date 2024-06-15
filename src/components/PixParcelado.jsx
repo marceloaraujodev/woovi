@@ -108,6 +108,8 @@ const PixInnerContainer = styled.div`
   box-sizing: border-box;
   border: 2px solid ${(props) => (props.$isSelected ? '#03D69D' : '#E5E5E5')};
   border-bottom-style: none;
+  background-color: ${(props) => (props.$isSelected ? '#F4FBF9' : '#fff')};
+  /* background-color: #F4FBF9; */
 
   &:first-child {
     border-top-right-radius: 10px;
@@ -135,10 +137,10 @@ const PixPaymentAmount = styled.div`
 `;
 const PayStallments = styled.p`
   margin: 0;
-
+  color: #4D4D4D;
   font-size: 24px;
   font-weight: 800;
-  line-height: 32.74px;
+  line-height: 33px;
 
   span {
     font-size: 24px;
@@ -150,26 +152,26 @@ const PayStallments = styled.p`
 const CheckMarkCircle = styled.span`
   border: 2px solid #e5e5e5;
 `;
-const DiscountText = styled.p`
+const TotalText = styled.p`
   margin: 0;
   margin-top: 1px;
   font-size: 16px;
   font-weight: 600;
-  line-height: 20px;
-  color: #03d69d;
-  height: 23px;
+  line-height: 21.82px;
+  color: #AFAFAF;
+  height: 27px;
 
   .span {
     font-weight: 800;
   }
 `;
 const BlueRectangleRow = styled.div`
+  display: flex;
   background-image: url('/Rectangle-77.png');
   height: 33px;
   background-repeat: no-repeat;
-  /* border: 2px solid red; */
   color: white;
-
+  margin-top: 7px;
   p {
     height: 20px;
     font: 16px;
@@ -209,45 +211,53 @@ export default function PixParcelado() {
   function handleSelection(id, index) {
     selectPaymentOption(id);
     setSelectedItem(index);
-    console.log(index);
   }
 
   const formattedValue = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
     minimumFractionDigits: 2,
-  }).format(mockUser.payAmount);
-
+  })
+  console.log(formattedValue.format(mockUser.payAmount))
+  const amount = formattedValue.format(mockUser.payAmount)
+  // .format(mockUser.payAmount);
   const items = [
     {
       id: 'stallments-2',
-      text: `R$ ${formattedValue}`,
+      text: ` ${formattedValue.format(mockUser.payAmount)}`,
       cashback: '3%',
-      cashbackText: 'R$300,00 de volta no seu pix na hora',
+      // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 2,
+      stallmentValue: formattedValue.format(1530000/100)
     },
     {
       id: 'stallments-3',
-      text: `R$ ${formattedValue}`,
+      text: formattedValue.format(1019600/100),
       cashback: '3%',
-      cashbackText: 'R$300,00 de volta no seu pix na hora',
+      // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 3,
+      stallmentValue: formattedValue.format(101960000/100)
     },
     {
       id: 'stallments-4',
-      text: `R$ ${formattedValue}`,
-      cashback: '3%',
-      cashbackText: 'R$300,00 de volta no seu pix na hora',
+      text: formattedValue.format(772500/100),
+      juros: '-3% de juros:',
+      jurosText: 'Melhor opção de parcelamento',
+      cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 4,
+      stallmentValue: formattedValue.format(7725000)
     },
     {
       id: 'stallments-5',
-      text: `R$ ${formattedValue}`,
+      text: formattedValue.format(630000/100),
       cashback: '3%',
-      cashbackText: 'R$300,00 de volta no seu pix na hora',
+      // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 4,
+      stallmentValue: formattedValue.format(630000)
     },
   ];
+
+
 
   return (
     <>
@@ -261,12 +271,10 @@ export default function PixParcelado() {
               <PixInnerContainer
                 key={index}
                 $isSelected={selectedItem === item.id}
-                // $itemId={item.cashback.id}
-                // style={{borderColor: "#E5E5E5"}}
               >
                 <PixPaymentAmount>
                   <PayStallments>
-                    1x <span>R$ {formattedValue}</span>
+                    {index + 2 }x <span> {item.text}</span>
                   </PayStallments>
                   <LabelWrapper htmlFor={item.id}>
                     <input
@@ -281,14 +289,16 @@ export default function PixParcelado() {
                     <CheckMarkCircle />
                   </LabelWrapper>
                 </PixPaymentAmount>
-                <DiscountText>
-                  Ganhe <span>3%</span> de Cashback
-                </DiscountText>
-                <BlueRectangleRow>
+                <TotalText>
+                  Total: RS 30.600,00
+                </TotalText>
+                {item.cashbackText ? (
+                  <BlueRectangleRow>
                   <p>
-                    🤑 <span>R$300,00</span> de volta no seu pix na hora
+                    <span>{item.juros}</span> {item.jurosText}
                   </p>
                 </BlueRectangleRow>
+                ) : ''}
               </PixInnerContainer>
             </React.Fragment>
           ))}
