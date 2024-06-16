@@ -23,7 +23,7 @@ const BlueRectangle = styled.button`
   }
 `;
 
-export default function button({onClick, children}) {
+export default function Button({onClick, children}) {
   return (
     <BlueRectangle onClick={onClick}>{children}</BlueRectangle>
   )
