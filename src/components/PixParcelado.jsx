@@ -1,8 +1,8 @@
 import React from 'react';
 import { useContext, useEffect, useState } from 'react';
 import PaymentContext from '../PaymentContext';
-import styled, { css } from 'styled-components';
-import axios from 'axios';
+import styled from 'styled-components';
+import {PixTag, PixTagText, CheckMarkCircle, LabelWrapper} from '../../style/StylesComponents';
 
 const CardContainer = styled.div`
   max-width: 429px;
@@ -12,96 +12,10 @@ const CardContainer = styled.div`
   position: relative;
   margin-bottom: 34px;
 `;
-const PixTag = styled.div`
-  border-radius: 20px;
-  height: 27px;
-  padding: 0 20px;
-  background-color: #e5e5e5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: -13.5px;
-  left: 21px;
-`;
-const PixTagText = styled.p`
-  margin: 0;
-  padding: 0;
-  font-weight: 800;
-  font-size: 18px;
-  line-height: 24px;
-`;
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
 `;
-const LabelWrapper = styled.label`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 10px;
-  position: relative;
-  cursor: pointer; /* Make the entire label clickable */
-
-  /* Hide the browser's default checkbox */
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-  /* Create a custom checkbox */
-  span {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    height: 25px;
-    width: 25px;
-    background-color: #fff;
-    border-radius: 50%;
-    transition: all 0.4s ease;
-  }
-
-  /* On mouse-over, add a grey background color */
-  &:hover input ~ span {
-    background-color: #43d8aa;
-    border: 2px solid #43d8aa;
-    opacity: 0.5;
-  }
-
-  /* When the checkbox is checked, add a blue background */
-  input:checked ~ span {
-    background-color: #03d69d;
-    border: 2px solid #34d2a3;
-  }
-
-  /* Create the checkmark/indicator (hidden when not checked) */
-  span:after {
-    content: '';
-    position: absolute;
-    display: none;
-  }
-
-  /* Show the checkmark when checked */
-  input:checked ~ span:after {
-    display: block;
-  }
-
-  /* Style the checkmark/indicator */
-  span:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
-  }
-`;
-
 const PixInnerContainer = styled.div`
   padding: 20px 21px;
   padding-bottom: 23px;
@@ -127,7 +41,6 @@ const PixInnerContainer = styled.div`
     border-bottom-style: solid;
   }
 `;
-
 const PixPaymentAmount = styled.div`
   display: flex;
   justify-content: space-between;
@@ -147,10 +60,6 @@ const PayStallments = styled.p`
     font-weight: 600;
     line-height: 32.74px;
   }
-`;
-
-const CheckMarkCircle = styled.span`
-  border: 2px solid #e5e5e5;
 `;
 const TotalText = styled.p`
   margin: 0;
@@ -184,20 +93,18 @@ const BlueRectangleRow = styled.div`
   p span {
     font-weight: 800;
   }
-`;
-const Footer = styled.div`
-  color: #b2b2b2;
-  font-size: 14px;
-  line-height: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @media screen and (max-width: 472px){
+    background-size: 298px 33px;
+    p{
+      font-size: 13.1px;
+    }
+    p span {
+    font-weight: 600;
+  }
 
-  p {
-    display: flex;
-    align-items: center;
   }
 `;
+
 
 export default function PixParcelado() {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -221,6 +128,8 @@ export default function PixParcelado() {
   console.log(formattedValue.format(mockUser.payAmount))
   const amount = formattedValue.format(mockUser.payAmount)
   // .format(mockUser.payAmount);
+
+  // Mock data
   const items = [
     {
       id: 'stallments-2',
@@ -228,15 +137,23 @@ export default function PixParcelado() {
       cashback: '3%',
       // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 2,
-      stallmentValue: formattedValue.format(1530000/100)
+      stallmentValue: formattedValue.format(1530000/100),
+      total:3060000,
+      cet:'0.5%',
+      identificator: '2c1b951f356c4680b13ba1c9fc889c47',
+      expires: '15/12/2021'
     },
     {
       id: 'stallments-3',
-      text: formattedValue.format(1019600/100),
+      text: formattedValue.format(1019666/100),
       cashback: '3%',
       // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 3,
-      stallmentValue: formattedValue.format(101960000/100)
+      stallmentValue: formattedValue.format(101960000/100),
+      total:3060000,
+      cet:'0.5%',
+      identificator: '2c1b951f356c4680b13ba1c9fc889c47',
+      expires: '15/12/2021'
     },
     {
       id: 'stallments-4',
@@ -245,7 +162,11 @@ export default function PixParcelado() {
       jurosText: 'Melhor opção de parcelamento',
       cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 4,
-      stallmentValue: formattedValue.format(7725000)
+      stallmentValue: formattedValue.format(7725000),
+      total:3060000,
+      cet:'0.5%',
+      identificator: '2c1b951f356c4680b13ba1c9fc889c47',
+      expires: '15/12/2021'
     },
     {
       id: 'stallments-5',
@@ -253,11 +174,37 @@ export default function PixParcelado() {
       cashback: '3%',
       // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 4,
-      stallmentValue: formattedValue.format(630000)
+      stallmentValue: formattedValue.format(630000),
+      total:3060000,
+      cet:'0.5%',
+      identificator: '2c1b951f356c4680b13ba1c9fc889c47',
+      expires: '15/12/2021'
+    },
+    {
+      id: 'stallments-6',
+      text: formattedValue.format(528333/100),
+      cashback: '3%',
+      // cashbackText: '300,00 de volta no seu pix na hora',
+      stallments: 4,
+      stallmentValue: formattedValue.format(528333),
+      total:3060000,
+      cet:'0.5%',
+      identificator: '2c1b951f356c4680b13ba1c9fc889c47',
+      expires: '15/12/2021'
+    },
+    {
+      id: 'stallments-7',
+      text: formattedValue.format(454285/100),
+      cashback: '3%',
+      // cashbackText: '300,00 de volta no seu pix na hora',
+      stallments: 4,
+      stallmentValue: formattedValue.format(454285),
+      total:3060000,
+      cet:'0.5%',
+      identificator: '2c1b951f356c4680b13ba1c9fc889c47',
+      expires: '15/12/2021'
     },
   ];
-
-
 
   return (
     <>
@@ -305,12 +252,6 @@ export default function PixParcelado() {
         </Wrapper>
       </CardContainer>
 
-      <Footer>
-        <img src="/checkBadgeFooter.png" alt="" /> &nbsp;
-        <p>
-          Pagamento 100% seguro via:&nbsp; <img src="/logofooter.png" alt="" />
-        </p>
-      </Footer>
     </>
   );
 }
