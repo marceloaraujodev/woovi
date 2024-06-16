@@ -16,6 +16,7 @@ const CardContainer = styled.div`
   margin: 0 auto;
   position: relative;
   margin-bottom: 34px;
+  margin-top: 32px;
 `;
 const PixInnerContainer = styled.div`
   display: flex;
@@ -92,6 +93,7 @@ export default function Pix() {
 
   function handleSelection(id) {
     selectPaymentOption(id);
+    console.log(id)
   }
 
   const formattedValue = new Intl.NumberFormat('pt-BR', {

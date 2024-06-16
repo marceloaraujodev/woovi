@@ -1,8 +1,16 @@
 import React from 'react';
+import Layout from './Layout';
 import { useContext, useEffect, useState } from 'react';
 import PaymentContext from '../PaymentContext';
 import styled from 'styled-components';
-import {PixTag, PixTagText, CheckMarkCircle, LabelWrapper} from '../../style/StylesComponents';
+import {
+  PixTag,
+  PixTagText,
+  CheckMarkCircle,
+  LabelWrapper,
+} from '../../style/StylesComponents';
+import Title from './Title';
+import Pix from './Pix';
 
 const CardContainer = styled.div`
   max-width: 429px;
@@ -11,6 +19,7 @@ const CardContainer = styled.div`
   margin: 0 auto;
   position: relative;
   margin-bottom: 34px;
+  margin-top: 32px;
 `;
 const Wrapper = styled.div`
   display: grid;
@@ -50,7 +59,7 @@ const PixPaymentAmount = styled.div`
 `;
 const PayStallments = styled.p`
   margin: 0;
-  color: #4D4D4D;
+  color: #4d4d4d;
   font-size: 24px;
   font-weight: 800;
   line-height: 33px;
@@ -67,7 +76,7 @@ const TotalText = styled.p`
   font-size: 16px;
   font-weight: 600;
   line-height: 21.82px;
-  color: #AFAFAF;
+  color: #afafaf;
   height: 27px;
 
   .span {
@@ -93,18 +102,16 @@ const BlueRectangleRow = styled.div`
   p span {
     font-weight: 800;
   }
-  @media screen and (max-width: 472px){
+  @media screen and (max-width: 472px) {
     background-size: 298px 33px;
-    p{
+    p {
       font-size: 13.1px;
     }
     p span {
-    font-weight: 600;
-  }
-
+      font-weight: 600;
+    }
   }
 `;
-
 
 export default function PixParcelado() {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -118,15 +125,16 @@ export default function PixParcelado() {
   function handleSelection(id, index) {
     selectPaymentOption(id);
     setSelectedItem(index);
+    console.log(id, index)
   }
 
   const formattedValue = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
     minimumFractionDigits: 2,
-  })
-  console.log(formattedValue.format(mockUser.payAmount))
-  const amount = formattedValue.format(mockUser.payAmount)
+  });
+  // console.log(formattedValue.format(mockUser.payAmount))
+
   // .format(mockUser.payAmount);
 
   // Mock data
@@ -137,77 +145,80 @@ export default function PixParcelado() {
       cashback: '3%',
       // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 2,
-      stallmentValue: formattedValue.format(1530000/100),
-      total:3060000,
-      cet:'0.5%',
+      stallmentValue: formattedValue.format(1530000 / 100),
+      total: 3060000,
+      cet: '0.5%',
       identificator: '2c1b951f356c4680b13ba1c9fc889c47',
-      expires: '15/12/2021'
+      expires: '15/12/2021',
     },
     {
       id: 'stallments-3',
-      text: formattedValue.format(1019666/100),
+      text: formattedValue.format(1019666 / 100),
       cashback: '3%',
       // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 3,
-      stallmentValue: formattedValue.format(101960000/100),
-      total:3060000,
-      cet:'0.5%',
+      stallmentValue: formattedValue.format(101960000 / 100),
+      total: 3060000,
+      cet: '0.5%',
       identificator: '2c1b951f356c4680b13ba1c9fc889c47',
-      expires: '15/12/2021'
+      expires: '15/12/2021',
     },
     {
       id: 'stallments-4',
-      text: formattedValue.format(772500/100),
+      text: formattedValue.format(772500 / 100),
       juros: '-3% de juros:',
       jurosText: 'Melhor opção de parcelamento',
       cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 4,
       stallmentValue: formattedValue.format(7725000),
-      total:3060000,
-      cet:'0.5%',
+      total: 3060000,
+      cet: '0.5%',
       identificator: '2c1b951f356c4680b13ba1c9fc889c47',
-      expires: '15/12/2021'
+      expires: '15/12/2021',
     },
     {
       id: 'stallments-5',
-      text: formattedValue.format(630000/100),
+      text: formattedValue.format(630000 / 100),
       cashback: '3%',
       // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 4,
       stallmentValue: formattedValue.format(630000),
-      total:3060000,
-      cet:'0.5%',
+      total: 3060000,
+      cet: '0.5%',
       identificator: '2c1b951f356c4680b13ba1c9fc889c47',
-      expires: '15/12/2021'
+      expires: '15/12/2021',
     },
     {
       id: 'stallments-6',
-      text: formattedValue.format(528333/100),
+      text: formattedValue.format(528333 / 100),
       cashback: '3%',
       // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 4,
       stallmentValue: formattedValue.format(528333),
-      total:3060000,
-      cet:'0.5%',
+      total: 3060000,
+      cet: '0.5%',
       identificator: '2c1b951f356c4680b13ba1c9fc889c47',
-      expires: '15/12/2021'
+      expires: '15/12/2021',
     },
     {
       id: 'stallments-7',
-      text: formattedValue.format(454285/100),
+      text: formattedValue.format(454285 / 100),
       cashback: '3%',
       // cashbackText: '300,00 de volta no seu pix na hora',
       stallments: 4,
       stallmentValue: formattedValue.format(454285),
-      total:3060000,
-      cet:'0.5%',
+      total: 3060000,
+      cet: '0.5%',
       identificator: '2c1b951f356c4680b13ba1c9fc889c47',
-      expires: '15/12/2021'
+      expires: '15/12/2021',
     },
   ];
 
   return (
     <>
+
+      <Title text="como você quer pagar?" />
+      <Pix />
       <CardContainer>
         <PixTag>
           <PixTagText>Pix Parcelado</PixTagText>
@@ -221,7 +232,7 @@ export default function PixParcelado() {
               >
                 <PixPaymentAmount>
                   <PayStallments>
-                    {index + 2 }x <span> {item.text}</span>
+                    {index + 2}x <span> {item.text}</span>
                   </PayStallments>
                   <LabelWrapper htmlFor={item.id}>
                     <input
@@ -236,16 +247,16 @@ export default function PixParcelado() {
                     <CheckMarkCircle />
                   </LabelWrapper>
                 </PixPaymentAmount>
-                <TotalText>
-                  Total: RS 30.600,00
-                </TotalText>
+                <TotalText>Total: RS 30.600,00</TotalText>
                 {item.cashbackText ? (
                   <BlueRectangleRow>
-                  <p>
-                    <span>{item.juros}</span> {item.jurosText}
-                  </p>
-                </BlueRectangleRow>
-                ) : ''}
+                    <p>
+                      <span>{item.juros}</span> {item.jurosText}
+                    </p>
+                  </BlueRectangleRow>
+                ) : (
+                  ''
+                )}
               </PixInnerContainer>
             </React.Fragment>
           ))}

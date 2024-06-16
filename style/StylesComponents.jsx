@@ -58,14 +58,14 @@ export const LabelWrapper = styled.label`
     transition: all .4s ease;
   }
 
-  /* On mouse-over, add a grey background color */
-  &:hover input ~ span {
+  /* On mouse-over, add a color to checkmark box */
+  /* &:hover input ~ span {
     background-color: #43d8aa;
     border: 2px solid #43d8aa;
     opacity: 0.5;
-    }
+    } */
     
-    /* When the checkbox is checked, add a blue background */
+    /* When the checkbox is checked, add a color background */
     input:checked ~ span {
       background-color: #03D69D;
       border: 2px solid #34D2A3;

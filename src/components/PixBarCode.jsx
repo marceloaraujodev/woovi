@@ -1,7 +1,21 @@
+import Layout from './Layout.jsx';
 import styled from 'styled-components';
 import { formattedValue } from '../utils/formatMoney';
 import Button from './Button.jsx';
-import {PrazoBox, EntradasContainer, CirclesContainer, Circle, Separator, MethodsBox, TotalBox, Divider, Cet, Funciona, Identificador} from '../../style/StylesComponents';
+import {
+  PrazoBox,
+  EntradasContainer,
+  CirclesContainer,
+  Circle,
+  Separator,
+  MethodsBox,
+  TotalBox,
+  Divider,
+  Cet,
+  Funciona,
+  Identificador,
+} from '../../style/StylesComponents';
+import Title from './Title.jsx';
 
 const Container = styled.div`
   display: flex;
@@ -51,68 +65,76 @@ export default function PixBarCode() {
   }
 
   return (
-    <Container>
-      <BarCodeContainer>
-        <img src="/barcode.png" alt="" />
-      </BarCodeContainer>
+    <>
+      <Layout>
+        <Title text="pague a entrada de R$ 15.300,00 pelo Pix?" />
+        <Container>
+          <BarCodeContainer>
+            <img src="/barcode.png" alt="" />
+          </BarCodeContainer>
 
-      <ButtonContainer>
-        <Button onClick={() => handleClickCopy(indexMockData.identificator)}>
-          Clique para copiar QR CODE <img src="/pagesicon.png" alt="" />
-        </Button>
-      </ButtonContainer>
-      <PrazoBox>
-        Prazo de pagamento:
-        <span>
-          {indexMockData.expires ? indexMockData.expires : '15/12/2021'} - 0817
-        </span>
-      </PrazoBox>
+          <ButtonContainer>
+            <Button
+              onClick={() => handleClickCopy(indexMockData.identificator)}
+            >
+              Clique para copiar QR CODE <img src="/pagesicon.png" alt="" />
+            </Button>
+          </ButtonContainer>
+          <PrazoBox>
+            Prazo de pagamento:
+            <span>
+              {indexMockData.expires ? indexMockData.expires : '15/12/2021'} -
+              0817
+            </span>
+          </PrazoBox>
 
-      <EntradasContainer>
-        <div>
-          <CirclesContainer>
-            <Circle></Circle>
-            <Separator />
-            <Circle></Circle>
-          </CirclesContainer>
+          <EntradasContainer>
+            <div>
+              <CirclesContainer>
+                <Circle></Circle>
+                <Separator />
+                <Circle></Circle>
+              </CirclesContainer>
 
-          <MethodsBox>
-            <div>1ª entrada no Pix</div>
-            <div>2ª no cartão</div>
-          </MethodsBox>
-        </div>
+              <MethodsBox>
+                <div>1ª entrada no Pix</div>
+                <div>2ª no cartão</div>
+              </MethodsBox>
+            </div>
 
-        <TotalBox>
-          <div>R$15.300,00</div>
-          <div>R$15.300,00</div>
-        </TotalBox>
-      </EntradasContainer>
-      <Divider />
-      <Cet>
-        CET: {indexMockData.cet ? indexMockData.cet : '0.5%'}{' '}
-        <span>
-          Total:{' '}
-          {indexMockData.total
-            ? formattedValue.format(indexMockData.total / 100)
-            : 'RS 30.600,00'}
-        </span>
-      </Cet>
-      <Divider />
-      <Funciona>
-        Como funciona?{' '}
-        <span>
-          <img src="/arrowup.png" alt="" />
-        </span>
-      </Funciona>
-      <Divider />
-      <Identificador>
-        <span>Identificador:</span>
-        <p>
-          {indexMockData.identificator
-            ? indexMockData.identificator
-            : '2c1b951f356c4680b13ba1c9fc889c47'}
-        </p>
-      </Identificador>
-    </Container>
+            <TotalBox>
+              <div>R$15.300,00</div>
+              <div>R$15.300,00</div>
+            </TotalBox>
+          </EntradasContainer>
+          <Divider />
+          <Cet>
+            CET: {indexMockData.cet ? indexMockData.cet : '0.5%'}{' '}
+            <span>
+              Total:{' '}
+              {indexMockData.total
+                ? formattedValue.format(indexMockData.total / 100)
+                : 'RS 30.600,00'}
+            </span>
+          </Cet>
+          <Divider />
+          <Funciona>
+            Como funciona?{' '}
+            <span>
+              <img src="/arrowup.png" alt="" />
+            </span>
+          </Funciona>
+          <Divider />
+          <Identificador>
+            <span>Identificador:</span>
+            <p>
+              {indexMockData.identificator
+                ? indexMockData.identificator
+                : '2c1b951f356c4680b13ba1c9fc889c47'}
+            </p>
+          </Identificador>
+        </Container>
+      </Layout>
+    </>
   );
 }
