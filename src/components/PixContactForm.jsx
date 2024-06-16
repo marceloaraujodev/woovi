@@ -233,7 +233,7 @@ export default function PixContactForm() {
         </Form>
 
         <div>
-          <Button onClick={handleBtnClick}>Pagar</Button>
+          {/* <Button onClick={handleBtnClick}>Pagar</Button> */}
         </div>
         <PrazoBox>
           Prazo de pagamento:
