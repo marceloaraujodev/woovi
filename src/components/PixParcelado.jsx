@@ -124,7 +124,6 @@ export default function PixParcelado() {
   function handleSelection(id, index) {
     selectPaymentOption(id);
     setSelectedItem(index);
-    console.log(id, index)
   }
 
   const formattedValue = new Intl.NumberFormat('pt-BR', {

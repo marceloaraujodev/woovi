@@ -93,7 +93,6 @@ export default function Pix() {
 
   function handleSelection(id) {
     selectPaymentOption(id);
-    console.log(id)
   }
 
   const formattedValue = new Intl.NumberFormat('pt-BR', {
