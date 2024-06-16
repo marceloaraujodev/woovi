@@ -4,7 +4,7 @@ import Layout from './Layout.jsx';
 import styled from 'styled-components';
 import Title from './Title.jsx';
 import { formattedValue } from '../utils/formatMoney';
-import Button from './Button.jsx';
+// import Button from './Button.jsx';
 import {
   PrazoBox,
   EntradasContainer,
