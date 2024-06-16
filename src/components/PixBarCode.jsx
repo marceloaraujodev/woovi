@@ -1,7 +1,7 @@
 import Layout from './Layout.jsx';
 import styled from 'styled-components';
 import { formattedValue } from '../utils/formatMoney';
-import Button from './Button.jsx';
+// import Button from './Button.jsx';
 import {
   PrazoBox,
   EntradasContainer,
@@ -68,11 +68,11 @@ export default function PixBarCode() {
           </BarCodeContainer>
 
           <ButtonContainer>
-            <Button
+            {/* <Button
               onClick={() => handleClickCopy(indexMockData.identificator)}
             >
               Clique para copiar QR CODE <img src="/pagesicon.png" alt="" />
-            </Button>
+            </Button> */}
           </ButtonContainer>
           <PrazoBox>
             Prazo de pagamento:
