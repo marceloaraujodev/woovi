@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from './Layout';
 import { useContext, useEffect, useState } from 'react';
 import PaymentContext from '../PaymentContext';
 import styled from 'styled-components';

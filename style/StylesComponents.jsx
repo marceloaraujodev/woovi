@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  max-width: 600px;
+`;
 export const CardContainer = styled.div`
   max-width: 429px;
   min-height: 137px;

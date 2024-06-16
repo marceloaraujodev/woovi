@@ -14,17 +14,11 @@ import {
   Cet,
   Funciona,
   Identificador,
+  PageContainer
 } from '../../style/StylesComponents';
 import Title from './Title.jsx';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  margin-bottom: 30px;
-  /* border: 1px solid gray; */
-`;
+
 const BarCodeContainer = styled.div`
   margin-top: 30px;
   display: flex;
@@ -68,7 +62,7 @@ export default function PixBarCode() {
     <>
       <Layout>
         <Title text="pague a entrada de R$ 15.300,00 pelo Pix?" />
-        <Container>
+        <PageContainer>
           <BarCodeContainer>
             <img src="/barcode.png" alt="" />
           </BarCodeContainer>
@@ -133,7 +127,7 @@ export default function PixBarCode() {
                 : '2c1b951f356c4680b13ba1c9fc889c47'}
             </p>
           </Identificador>
-        </Container>
+        </PageContainer>
       </Layout>
     </>
   );

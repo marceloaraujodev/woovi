@@ -17,22 +17,16 @@ import {
   Cet,
   Funciona,
   Identificador,
+  PageContainer
 } from '../../style/StylesComponents';
 // import axios from 'axios';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  margin-bottom: 30px;
-  margin-top: 28px;
-`;
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   position: relative;
   gap: 28px;
+  margin-top: 28px;
 `;
 const FormGroup = styled.div`
   position: relative;
@@ -57,6 +51,9 @@ const FormGroup = styled.div`
     color: #4d4d4d;
     padding: 20px;
     box-sizing: border-box;
+  }
+  input::placeholder{
+    color: #d6d6d6;
   }
   /* input:focus{
     background-color: white;
@@ -161,7 +158,7 @@ export default function PixContactForm() {
     <>
     <Layout>
       <Title text="pague o restante em 1x no cartão" />
-      <Container>
+      <PageContainer>
         <Form onSubmit={handleForm}>
           <FormGroup>
             <label htmlFor="nome">Nome completo</label>
@@ -171,7 +168,7 @@ export default function PixContactForm() {
               name="nome"
               value={name}
               id='nome'
-              placeholder="João Linaldo Dias Frage Santos"
+              placeholder="Nome"
             />
           </FormGroup>
 
@@ -291,7 +288,7 @@ export default function PixContactForm() {
               : '2c1b951f356c4680b13ba1c9fc889c47'}
           </p>
         </Identificador>
-      </Container>
+      </PageContainer>
     </Layout>
     </>
   );
