@@ -28,10 +28,12 @@ const PixInnerContainer = styled.div`
   padding: 20px 21px;
   padding-bottom: 23px;
   box-sizing: border-box;
+  // sets color if selected
   border: 2px solid ${(props) => (props.$isSelected ? '#03D69D' : '#E5E5E5')};
   border-bottom-style: none;
+  // sets backgroundcolor if selected
   background-color: ${(props) => (props.$isSelected ? '#F4FBF9' : '#fff')};
-  /* background-color: #F4FBF9; */
+
 
   &:first-child {
     border-top-right-radius: 10px;
