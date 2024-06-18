@@ -29,7 +29,7 @@ const PixInnerContainer = styled.div`
   padding-bottom: 23px;
   box-sizing: border-box;
   border: 2px solid ${(props) => (props.$isSelected ? '#03D69D' : '#E5E5E5')};
-  border-bottom-style: none;
+  border-bottom-style: none;/* we have to set this to none otherwise we'll get a double thickness border between both elements */
   background-color: ${(props) => (props.$isSelected ? '#F4FBF9' : '#fff')};
   /* background-color: #F4FBF9; */
 
@@ -46,7 +46,7 @@ const PixInnerContainer = styled.div`
   &:last-child {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    border-bottom-style: solid;
+    border-bottom-style: solid; /* since this is the last element we show the borders */
   }
 `;
 const PixPaymentAmount = styled.div`
@@ -131,9 +131,6 @@ export default function PixParcelado() {
     currency: 'BRL',
     minimumFractionDigits: 2,
   });
-  // console.log(formattedValue.format(mockUser.payAmount))
-
-  // .format(mockUser.payAmount);
 
   // Mock data
   const items = [
@@ -214,7 +211,6 @@ export default function PixParcelado() {
 
   return (
     <>
-
       <Title text="como você quer pagar?" />
       <Pix />
       <CardContainer>
